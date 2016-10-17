@@ -9,10 +9,10 @@ from feedback import Feedback, Item
 import util
 
 _bundle_id = None
-_config_base_dir = os.path.expanduser('~/Library/Application Support/Alfred 2/Workflow Data/')
+_config_base_dir = os.path.expanduser('~/Library/Application Support/Alfred 3/Workflow Data/')
 _cache_base_dir = os.path.expanduser('~/Library/Caches/com.runningwithcrayons.Alfred-2/Workflow Data/')
-_log_base_dir = os.path.expanduser('~/Library/Logs/Alfred 2')
-_storage_base_dir = '/tmp/Alfred 2'
+_log_base_dir = os.path.expanduser('~/Library/Logs/Alfred 3')
+_storage_base_dir = '/tmp/Alfred 3'
 
 def bundleID():
     global _bundle_id
@@ -65,7 +65,7 @@ def exit(msg='', retcode=0):
     sys.exit(retcode)
     
 def query(word):
-    scpt = 'tell application "Alfred 2" to search "{}"'.format(word)
+    scpt = 'tell application "Alfred 3" to search "{}"'.format(word)
     subprocess.call(['osascript', '-e', scpt])
 
 def notify(title, subtitle, text='', sound=True):

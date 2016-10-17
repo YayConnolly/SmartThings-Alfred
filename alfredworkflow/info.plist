@@ -157,7 +157,7 @@ print(login_command())</string>
 set temp to do shell script "echo " &amp; quoted form of temp &amp; "| tr -d '\\r\\n' "
 
 if temp is "" then
-	tell application "Alfred 2" to search "st_login "
+	tell application "Alfred 3" to search "st_login "
 else
 	do shell script "python get_endpoints.py"
 end if</string>

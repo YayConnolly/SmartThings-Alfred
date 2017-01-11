@@ -4,11 +4,11 @@ from settings import PROTOCOL, HOSTNAME
 
 
 def execute_command(query=""):
-    args = string.split(query, ".")
+    args = string.split(query, "|")
     url = args[0]
     command = args[1]
 
-    url = "{protocol}://{hostname}{url}".format(protocol=PROTOCOL, hostname=HOSTNAME, url=url)
+    url = "{url}".format(protocol=PROTOCOL, hostname=HOSTNAME, url=url)
     
     requestBody = '{"command":"' + "{command}".format(command=command) + '"}'
     request = urllib2.Request(url, data=requestBody)

@@ -21,7 +21,7 @@ def refresh_devices():
                 
                 for deviceType in ("switches", "locks"):
                     endpoint = endpoint.strip()
-                    url = "{protocol}://{hostname}{endpoint}/{deviceType}".format(protocol=PROTOCOL, hostname=HOSTNAME, endpoint=endpoint, deviceType=deviceType)
+                    url = "{endpoint}/{deviceType}".format(protocol=PROTOCOL, hostname=HOSTNAME, endpoint=endpoint, deviceType=deviceType)
 
                     req = urllib2.Request(url)
                     req.add_header('Authorization', "Bearer %s" % token)
@@ -32,11 +32,10 @@ def refresh_devices():
                     for device in jsonData:
                         deviceKey = "{endpoint}/{deviceType}/{deviceId}".format(endpoint=endpoint, deviceType=deviceType, deviceId=device['id'])                        
                         deviceValue = device['name'] if len(device['label']) == 0 else device['label']
-                        deviceCache = "{key}:{value}\n".format(key=deviceKey, value=deviceValue)
+                        deviceCache = "{key}|{value}\n".format(key=deviceKey, value=deviceValue)
                         devicesFile.write(deviceCache)
                         
     devicesFile.close()
     
     return "Your SmartThings device cache has been updated"
 
-    

@@ -16,5 +16,5 @@ jsonData = json.loads(the_page)
 # store "Alfred Workflow" endpoint url
 endpointFile = open("endpoints.txt", "w")
 for endpoint in jsonData:
-    endpointFile.write(endpoint["url"] + "\n")
+    endpointFile.write(endpoint["uri"] + "\n")
 endpointFile.close()

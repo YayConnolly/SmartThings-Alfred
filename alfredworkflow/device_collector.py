@@ -47,7 +47,7 @@ def device_collector(query=""):
         try:
             deviceFile = open("devices.txt")
             for deviceDataString in deviceFile.readlines():
-                deviceData = string.split(deviceDataString, ":")
+                deviceData = string.split(deviceDataString, "|")
                 deviceEndpoint = deviceData[0].strip()
                 deviceLabel = deviceData[1].strip()
     
@@ -55,7 +55,7 @@ def device_collector(query=""):
                     if not deviceFilter.lower() in deviceLabel.lower():
                         continue
     
-                arg = "{deviceEndpoint}.{command}".format(deviceEndpoint=deviceEndpoint, command=command)
+                arg = "{deviceEndpoint}|{command}".format(deviceEndpoint=deviceEndpoint, command=command)
                 
                 title = deviceLabel
                 if command.__len__() > 1:

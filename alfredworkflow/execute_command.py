@@ -8,6 +8,7 @@ def execute_command(query=""):
     url = args[0]
     command = args[1]
 
+    # TODO: this does nothing-- clean it up (are other settings.py vars unused?)
     url = "{url}".format(protocol=PROTOCOL, hostname=HOSTNAME, url=url)
     
     requestBody = '{"command":"' + "{command}".format(command=command) + '"}'

@@ -1,8 +1,5 @@
-import json
-import urllib2
 import string
 from alfred import Feedback
-from settings import PROTOCOL, HOSTNAME
 from http_server import stop
 
 
@@ -38,10 +35,6 @@ def device_collector(query=""):
             deviceFilter += ' {ca}'.format(ca=currentArg)
 
     deviceFilter = deviceFilter.strip()
-
-    tokenFile = open("token.txt")
-    token = tokenFile.read()
-    tokenFile.close()
 
     with open("endpoints.txt", 'r') as fh:
         try:

@@ -17,6 +17,13 @@ An Alfred Workflow that allows you to control your physical graph through Alfred
 * `st <device> <command>` will send `<command>` to your `<device>`
 	- example: `st lamp off` will turn off your lamp
 
+#Grouped Switches#
+* `st_g <group_name> <create/delete>` will create / destroy a group with that name
+	- example: `st k create` will create a group called "k" that you can add to
+* `st_g <group_name> <add/remove> <device>` will add / remove a switch from a group
+	- example: `st_g k add Kitchen Bulb 1` will add that switch to the "k" group
+* `st_g <group_name> <on/off>` will turn a group of switches on / off
+
 
 #Currently Supported Devices#
 * switch
@@ -50,7 +57,13 @@ An Alfred Workflow that allows you to control your physical graph through Alfred
 To find the installed directory, open `Alfred Preferences`, double-click any of the script steps, and select `Open workflow folder` from the bottom-right of the window.
 
 ###Logging###
-Alfred doesn't give you any output that I know of. I have been creating an `output.txt` file and writing my logs to that. The `output.txt` file will be created in the `installed directory`.
+Logging happens via standard error, and appears in the workflow debug window (click the upper right bug icon to toggle debugging mode). From python:
+```
+log = sys.stderr.write
+log(str(args))
+
+```
+Or you could create an `output.txt` file and write logs to that. The `output.txt` file will be created in the `installed directory`.
 
 ###Editing###
 You may find it easier to make changes directly in the `installed directory` because any changes you make there will be reflected in Alfred immediately. Just make sure you don't copy any generated files back to your git directory (or at the very least don't commit them). We like to keep things clean :)  

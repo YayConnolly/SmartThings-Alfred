@@ -17,18 +17,18 @@ def device_collector(query=""):
     switchCommandsFile = open("commands.switches.txt")
     switchCommands = switchCommandsFile.read()
     switchCommandsFile.close()
-    
+
     lockCommandsFile = open("commands.locks.txt")
     lockCommands = lockCommandsFile.read()
     lockCommandsFile.close()
-    
+
     executable = False
     if command in switchCommands or command in lockCommands:
         if len(command) > 0:
             executable = True
     else:
         command = ''
-    
+
     deviceFilter = ''
     for currentArg in args:
         if currentArg != command:
@@ -43,24 +43,24 @@ def device_collector(query=""):
                 deviceData = string.split(deviceDataString, "|")
                 deviceEndpoint = deviceData[0].strip()
                 deviceLabel = deviceData[1].strip()
-    
+
                 if len(deviceFilter) > 0:
                     if not deviceFilter.lower() in deviceLabel.lower():
                         continue
-    
+
                 arg = "{deviceEndpoint}|{command}".format(deviceEndpoint=deviceEndpoint, command=command)
-                
+
                 title = deviceLabel
                 if command.__len__() > 1:
                     if command in switchCommands:
                         title = "Turn {command} {device}".format(command=command, device=deviceLabel)
                     else:
                         title = "{command} {device}".format(command=command.capitalize(), device=deviceLabel)
-    
+
                 feedback.addItem(title=title, subtitle=deviceLabel, arg=arg, valid=executable, autocomplete=' {l}'.format(l=deviceLabel))
-            
+
             deviceFile.close()
         except IOError:
             print "Uh oh"
-    
+
     return feedback

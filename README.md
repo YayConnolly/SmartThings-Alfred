@@ -7,10 +7,10 @@ An Alfred Workflow that allows you to control your physical graph through Alfred
 #Keywords#
 * `st_login` will take you through the login process
 * `st_logout` will destroy your auth token
-* `st_update` will collect the devices specified in all of your installed smartapp instances and update your local device cache. 
+* `st_update` will collect the devices specified in all of your installed smartapp instances and update your local device cache.
 	- This needs to be done every time you change permissions, rename a device, etc.
 * `st` (without a space) will put the `st_login`, `st_logout`, and `st_update` in the search list and allow you to select them
-* `st ` (with a space)  will display the devices specified in all of your installed smartapp instances 
+* `st ` (with a space)  will display the devices specified in all of your installed smartapp instances
 	- remember to use st_update first
 * `st <command> <device>` will send `<command>` to your `<device>`
 	- example: `st on lamp` will turn on your lamp
@@ -66,6 +66,6 @@ log(str(args))
 Or you could create an `output.txt` file and write logs to that. The `output.txt` file will be created in the `installed directory`.
 
 ###Editing###
-You may find it easier to make changes directly in the `installed directory` because any changes you make there will be reflected in Alfred immediately. Just make sure you don't copy any generated files back to your git directory (or at the very least don't commit them). We like to keep things clean :)  
-  
+You may find it easier to make changes directly in the `installed directory` because any changes you make there will be reflected in Alfred immediately. Just make sure you don't copy any generated files back to your git directory (or at the very least don't commit them). We like to keep things clean :)
+
 If you do edit in the installed directory, backup your installed directory and update the workflow using the steps above one last time before committing and test thoroughly. You'd hate to have missed something.

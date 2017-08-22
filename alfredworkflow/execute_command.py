@@ -10,7 +10,7 @@ def execute_command(query=""):
 
     # TODO: this does nothing-- clean it up (are other settings.py vars unused?)
     url = "{url}".format(protocol=PROTOCOL, hostname=HOSTNAME, url=url)
-    
+
     requestBody = '{"command":"' + "{command}".format(command=command) + '"}'
     request = urllib2.Request(url, data=requestBody)
 
